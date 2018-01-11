@@ -1,0 +1,15 @@
+﻿@using WebApplication1.Models
+@model WebApplication1.Models.GoodViewModel
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2>Index</h2>
+
+<div id="Goods_table">
+@Html.Action("GetTableGoods")
+</div>
+<div>
+    @Ajax.PageLinks(Model.PageLinkInfo, x => Url.Action("GetTableGoods", new { id = x }), "Goods_table")
+</div>

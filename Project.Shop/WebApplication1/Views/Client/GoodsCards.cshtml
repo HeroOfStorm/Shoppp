@@ -1,0 +1,57 @@
+﻿@model WebApplication1.Models.GoodViewModel
+
+
+
+
+@foreach (var item in Model.GoodsList)
+{
+    if (item.GoodId % 3 == 1 || item.GoodId == 1)
+    {
+        @Html.Partial("RowBegin")
+    }
+    <div class="card col-sm" style="width: 20rem;">
+        <table class="table">
+            <tr>
+                <td>
+                    <img src="@item.PhotoPath" width="200" height="200">
+                </td>
+            </tr>
+            <tr>
+                @*<td>
+                    @Html.DisplayNameFor(model => model.GoodName):
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.GoodName)
+                </td>
+            </tr>
+            <tr>
+                @*<td>
+                    @Html.DisplayNameFor(model => model.Category):
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+            </tr>
+            <tr>
+                @*<td>
+                    @Html.DisplayNameFor(model => model.Manufacturer):
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer.ManufacturerName)
+                </td>
+            </tr>
+            <tr>
+                @*<td>
+                    @Html.DisplayNameFor(model => model.Price):
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+            </tr>
+        </table>
+    </div>
+    if (item.GoodId % 3 == 0 || item.GoodId == Model.GoodsList.ToList().Count)
+    {
+        @Html.Partial("RowEnd")
+    }
+}
